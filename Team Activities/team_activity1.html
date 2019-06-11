@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Team Activity 1</title>
+</head>
+<body>
+    <input type="text" name="text" id = 'n1'  placeholder="type text here">
+    <button onclick="addNum()">+</button>
+    <input type="text" name="text" id = 'n2' placeholder="type text here">
+    <button onclick="displayNum()">Press me</button>
+    <div id="test">
+    </div>
+    <script>
+    function displayNum() {
+        
+        let newNum = parseFloat(document.getElementById('n1').value);
+        if(isNaN(newNum)){
+            alert("Enter a Number please.")
+        }
+        else{
+            document.getElementById('test').innerHTML = computeNum(newNum);
+        }
+    }
+    function computeNum(newNum) {
+        let myNum = 0;
+        for(let i = 0; i <= newNum; i++){
+            myNum += i;
+        }    
+            return myNum;
+        
+    }
+    function addNum(){
+        let newNum;
+        let n1 = parseFloat(document.getElementById('n1').value);
+        let n2 = parseFloat(document.getElementById('n2').value);
+        
+        if(isNaN(n1) || isNaN(n2)){
+            alert("Enter a Number please.")
+        }
+        else{
+            newNum = n1 + n2;
+            document.getElementById('test').innerHTML = newNum;
+        }
+
+        
+        
+    }
+    </script>
+</body>
+</html>
