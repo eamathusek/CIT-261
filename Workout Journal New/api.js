@@ -13,3 +13,12 @@ unirest.get("https://food-calorie-data-search.p.rapidapi.com/api/search?keyword=
 .end(function (result) {
   console.log(result.status, result.headers, result.body);
 });
+
+const baseurl = "https://food-calorie-data-search.p.rapidapi.com/api/search?keyword=apple";
+
+async function fetchApi(url){
+    const response = await fetch(baseurl + url);
+    const data = await response.json();
+    console.log(data);
+}
+fetchApi("calories");
