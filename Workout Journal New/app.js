@@ -51,5 +51,26 @@ form.addButton.addEventListener('click', function (e) {
   }
 })
 
+function check_web_storage_support() {
+  if(typeof(Storage) !== "undefined") {
+      return(true);
+  }
+  else {
+      alert("Web storage unsupported!");
+      return(false);
+  }
+  console.log(check_web_storage_support)
+}
 
-
+function save() {
+  if(check_web_storage_support() == true) {
+      var area = document.getElementById("notes");
+      if(area.value != '') {
+          localStorage.setItem("notes", area.value);
+      }
+      else {
+          alert("Nothing to save");
+      }
+  }
+  console.log(save);
+}
