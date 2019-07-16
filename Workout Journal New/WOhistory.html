@@ -22,11 +22,29 @@
         <option value="blue">Blue-Good</option>
         <option value="yellow">Yellow-Ok</option>
       </select>
-      <button id="formAddButton">Add note</button>
+      <button id="formAddButton" class="btn">Add note</button>
     </form>
     
     <div id="notes"></div>
+    <div id="result"></div>
     <script src="app.js"></script>
+
+    <script>
+      // Check browser support
+      if (typeof(Storage) !== "undefined") {
+        // Store
+        localStorage.setItem("notes");
+        // Retrieve
+        document.getElementById("result").innerHTML = localStorage.getItem("notes", "formColor");
+      } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      }
+      </script>
+    <script>
+      function myFunction() {
+        document.getElementById("notes").contentEditable = true;
+      }
+      </script>
 
   </body>
 

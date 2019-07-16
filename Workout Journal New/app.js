@@ -62,15 +62,28 @@ function check_web_storage_support() {
   console.log(check_web_storage_support)
 }
 
-function save() {
-  if(check_web_storage_support() == true) {
-      var area = document.getElementById("notes");
-      if(area.value != '') {
-          localStorage.setItem("notes", area.value);
-      }
-      else {
-          alert("Nothing to save");
-      }
+// function save() {
+//   if(check_web_storage_support() == true) {
+//       var area = document.getElementById("notes");
+//       if(area.value != '') {
+//           localStorage.setItem("notes", area.value);
+//       }
+//       else {
+//           alert("Nothing to save");
+//       }
+//   }
+//   console.log(save);
+// }
+
+function myFunction1(xhttp)
+{
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    myObj = this.responseText;
+    document.getElementById("formNoteText").innerHTML = myObj;
   }
-  console.log(save);
+};
+xmlhttp.open("GET", "notes.txt", true);
+xmlhttp.send();
 }
