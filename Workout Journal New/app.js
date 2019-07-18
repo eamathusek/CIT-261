@@ -4,7 +4,7 @@ form.noteText = document.querySelector('#formNoteText');
 form.addButton = document.querySelector('#formAddButton');
 form.color = document.querySelector('#formColor');
 
-const notes = document.querySelector('#notes');
+const notesElement = document.querySelector('#notes');
 
 form.noteText.focus();
 
@@ -21,7 +21,7 @@ function addNote() {
   deleteButton.innerHTML = '&times;';
 
   note.appendChild(deleteButton);  
-  notes.appendChild(note);
+  notesElement.appendChild(note);
 
   form.noteText.value = '';
   form.noteText.focus();
@@ -62,28 +62,28 @@ function check_web_storage_support() {
   console.log(check_web_storage_support)
 }
 
-// function save() {
-//   if(check_web_storage_support() == true) {
-//       var area = document.getElementById("notes");
-//       if(area.value != '') {
-//           localStorage.setItem("notes", area.value);
-//       }
-//       else {
-//           alert("Nothing to save");
-//       }
-//   }
-//   console.log(save);
-// }
-
-function myFunction1(xhttp)
-{
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    myObj = this.responseText;
-    document.getElementById("formNoteText").innerHTML = myObj;
+function save() {
+  if(check_web_storage_support() == true) {
+      var area = document.getElementById("notes");
+      if(area.value != '') {
+          localStorage.setItem("notes", area.value);
+      }
+      else {
+          alert("Nothing to save");
+      }
   }
-};
-xmlhttp.open("GET", "notes.txt", true);
-xmlhttp.send();
+  console.log(save);
 }
+
+// function myFunction1(xhttp)
+// {
+//   var xmlhttp = new XMLHttpRequest();
+//   xmlhttp.onreadystatechange = function() {
+//   if (this.readyState == 4 && this.status == 200) {
+//     myObj = this.responseText;
+//     document.getElementById("formNoteText").innerHTML = myObj;
+//   }
+// };
+// xmlhttp.open("GET", "notes.txt", true);
+// xmlhttp.send();
+// }

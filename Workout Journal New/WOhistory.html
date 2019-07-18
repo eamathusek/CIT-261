@@ -25,25 +25,55 @@
       <button id="formAddButton" class="btn">Add note</button>
     </form>
     
-    <div id="notes"></div>
+    <div id="notes">
+      <button onclick="myFunction()">Edit Notes</button>
+      <button onclick="save()">Save Notes</button>
+    </div>
     <div id="result"></div>
     <script src="app.js"></script>
 
-    <script>
-      // Check browser support
-      if (typeof(Storage) !== "undefined") {
-        // Store
-        localStorage.setItem("notes");
-        // Retrieve
-        document.getElementById("result").innerHTML = localStorage.getItem("notes", "formColor");
-      } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-      }
-      </script>
+    
     <script>
       function myFunction() {
         document.getElementById("notes").contentEditable = true;
       }
+    </script>
+
+
+
+      <script>
+        function check_web_storage_support() {
+          if(typeof(Storage) !== "undefined") {
+              return(true);
+          }
+          else {
+              alert("Web storage unsupported!");
+              return(false);
+          }
+          console.log(check_web_storage_support)
+        }
+
+        let notesList = [];
+
+        function save() {
+          notesList = [];
+          if(check_web_storage_support() == true) {
+            var notes = document.querySelectorAll(".note");
+
+            notes.forEach(function(note){
+              notesList.push(note.innerText)
+            })
+            console.log(notesList);
+            if(notesList.length >= 1) {
+              localStorage.setItem("notes", notesList);
+              alert("Journal Saved");
+            }
+            else {
+              alert("Nothing to save");
+            }
+          }
+          console.log(save);
+        }
       </script>
 
   </body>
